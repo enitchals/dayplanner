@@ -9,7 +9,7 @@ import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
-const initStore = {todo:['a', 'b', 'test'], notes:[]};
+const initStore = {todo:[], notes:[]};
 
 const store = createStore(reducers, initStore, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 

@@ -6,7 +6,7 @@ export default (props) => {
     <div>
         <h1>Notepad</h1>
         <ul>
-            { notes }
+            { props.notes.map((note, i) => <p>{note}</p>) }
         </ul>
         </div>
     )
