@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addToDo, toggle } from '../actions/toDoActions';
+import { addToDo, removeToDo } from '../actions/toDoActions';
+import ToDoList from './ToDoList';
+import { store } from '../';
 
 class ToDo extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {newToDo: ''}
+        this.changeHandler = this.changeHandler.bind(this);
+        this.submitHandler = this.submitHandler.bind(this);
     }
 
   changeHandler = (event) => {
@@ -13,30 +17,18 @@ class ToDo extends Component {
   }
 
   submitHandler = () => {
-      addToDo(this.state.newToDo);
-      this.state.newToDo = '';
+      this.props.addToDo(this.state.newToDo);
+      this.setState({newToDo: ''});
   }
 
 
   render() {
     return (
-      <div className="ToDo">
-          <h1>To Do List</h1>
-          <ul>
-              {this.props.todo.map((todo, i) => {
-                  return (
-                      <div>
-                          <p className="ToDoItem" key={i}>
-                          <button onClick = {() => toggle(todo)}> X </button>
-                          <span className="ToDoItem-text">{todo}</span>
-                          </p>
-                      </div>
-                  );
-              })}
-          </ul>
-          <input onChange={this.changeHandler} placeholder="new todo" value={this.state.newToDo} />
-          <button onClick={this.submitHandler}>Submit</button>
-      </div>
+        <div>
+        <ToDoList todo ={this.props.todo} />
+        <input type="text" onChange={this.changeHandler} placeholder="new todo" value={this.state.newToDo}/>
+        <button onClick={this.submitHandler}>Submit</button>
+        </div>
     );
   };
 };
@@ -47,4 +39,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { addToDo, toggle })(ToDo);
+export default connect(mapStateToProps, { addToDo, removeToDo })(ToDo);

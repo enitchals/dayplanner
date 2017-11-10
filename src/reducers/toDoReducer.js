@@ -1,26 +1,19 @@
-import { ADD_TODO, TOGGLE_TODO } from '../actions/toDoActions';
+import { ADD_TODO, REMOVE_TODO } from '../actions/toDoActions';
 
-const initialState = {todo: []}
-
-const toDoReducer = (state = initialState, action) => {
+const toDoReducer = (todo=[], action) => {
     switch (action.type) {
         case ADD_TODO:
-            state = {
-                ...state,
-                todo: state.todo.push([action.payload, false])
-            };
-        case TOGGLE_TODO:
-            const toDoItems = state.todo;
-            toDoItems.forEach((item, i) => {
-                if (action.payload === item[0]) {
-                    item.i[1] = !item.i[1];
+            todo.push(action.payload);
+            return todo;
+        case REMOVE_TODO:
+            todo.forEach((item, i) => {
+                if (action.payload === item) {
+                    todo.splice(i, 1);
                 }
             })
-            state = {...state,
-            todo: toDoItems}
-            return state;
-    }
-    return state;
+            return todo;
+        }
+        return todo;           
 }
 
 export default toDoReducer;

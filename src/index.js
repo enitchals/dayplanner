@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
 import { Provider } from 'react-redux';
 
@@ -9,7 +9,7 @@ import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
-const store = createStore(reducers, {todo:[], notes:[]})
+const store = createStore(reducers, {todo:['a', 'b', 'test'], notes:[]}, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 ReactDOM.render(<Provider store={store}><Router><App /></Router></Provider>, document.getElementById('root'));
 registerServiceWorker();
