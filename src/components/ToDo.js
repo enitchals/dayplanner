@@ -24,7 +24,7 @@ class ToDo extends Component {
 
   render() {
     return (
-        <div>
+        <div className="ToDo">
         <ToDoList todo ={this.props.todo} />
         <input type="text" onChange={this.changeHandler} placeholder="new todo" value={this.state.newToDo}/>
         <button onClick={this.submitHandler}>Submit</button>

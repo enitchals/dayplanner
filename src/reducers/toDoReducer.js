@@ -1,19 +1,16 @@
 import { ADD_TODO, REMOVE_TODO } from '../actions/toDoActions';
 
-const toDoReducer = (todo=[], action) => {
+const initialState = {todo:['a', 'b', 'test']};
+
+const toDoReducer = (todo = initialState, action) => {
     switch (action.type) {
         case ADD_TODO:
-            todo.push(action.payload);
-            return todo;
+            return todo.concat(action.payload);
         case REMOVE_TODO:
-            todo.forEach((item, i) => {
-                if (action.payload === item) {
-                    todo.splice(i, 1);
-                }
-            })
+            return todo.filter((item) => item !== action.payload);
+        default:
             return todo;
-        }
-        return todo;           
+    }
 }
 
 export default toDoReducer;
