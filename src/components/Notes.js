@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addNote } from '../actions/noteActions';
+import { addNote, clearNotes } from '../actions/noteActions';
 import NoteList from './NoteList';
 import { store } from '../';
 
@@ -21,13 +21,13 @@ class Notes extends Component {
       this.setState({newNote: ''});
   }
 
-
   render() {
     return (
         <div className="Notes">
         <NoteList notes ={this.props.notes} />
         <input type="text" onChange={this.changeHandler} placeholder="write a note" value={this.state.newNote}/>
         <button onClick={this.submitHandler}>Add</button>
+        <button onClick = {this.props.clearNotes}>Clear Notes</button>
         </div>
     );
   };
@@ -39,4 +39,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { addNote })(Notes);
+export default connect(mapStateToProps, { addNote, clearNotes })(Notes);
