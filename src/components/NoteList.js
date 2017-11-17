@@ -1,12 +1,12 @@
 import React from 'react';
+import Note from './Note';
 
 export default (props) => {
-    const notes = props.notes.map((note, i) => {note});
+    const notes = props.notes.map((note, i) => <Note note={note} key={i} index={i} />);
     return(
     <div>
-        <h1>Notepad</h1>
         <ul>
-            { props.notes.map((note, i) => <p>{note}</p>) }
+            { notes }
         </ul>
         </div>
     )

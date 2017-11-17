@@ -1,6 +1,5 @@
 import React from 'react';
 export const ADD_NOTE = 'ADD_NOTE';
-export const CLEAR_NOTES = 'CLEAR_NOTES';
 
 export const addNote = (note) => {
     return {
@@ -8,10 +7,3 @@ export const addNote = (note) => {
         payload: note
     };
 };
-
-export const clearNotes = () => {
-    return {
-        type: CLEAR_NOTES,
-        payload: []
-    }
-}

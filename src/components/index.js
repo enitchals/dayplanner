@@ -7,5 +7,6 @@ import ThisWeek from './ThisWeek';
 import ToDo from './ToDo';
 import Notes from './Notes';
 import Calendar from './Calendar'
+import Reminders from './Reminders'
 
-export { Header, Nav, Home, Today, ThisWeek, ThisMonth, ToDo, Notes, Calendar };
+export { Header, Nav, Home, Today, ThisWeek, ThisMonth, ToDo, Notes, Calendar, Reminders };

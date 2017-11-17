@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Route path exact="/" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route path="/today" component={Today} />
         <Route path="/week" component={ThisWeek} />
         <Route path="/month" component={ThisMonth} />

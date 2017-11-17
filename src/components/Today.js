@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ToDo, Notes, Calendar } from './';
+import { ToDo, Notes, Calendar, Reminders } from './';
 
 class Today extends Component {
 
